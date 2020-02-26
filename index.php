@@ -10,14 +10,8 @@
     $account = $instagram->getAccount('arzamaskov');
 
     // echo $twig->render('index.html', ['name' => 'Andrey']);
-
-
-    
     // $nonPrivateAccountMedias = $instagram->getMedias('arzamaskov');
-    
     // echo $twig->render('index.html', ['insta' => $nonPrivateAccountMedias[0]->getLink()]);
-
-    
 
     // Available fields
     // echo "Account info:\n";
