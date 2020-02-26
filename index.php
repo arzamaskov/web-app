@@ -7,7 +7,7 @@
     $twig = new \Twig\Environment($loader);
 
     $instagram = new Instagram();
-    $account = $instagram->getAccount('arzamaskov');
+    $account = $instagram->getAccount('camjpoulton');
 
     // echo $twig->render('index.html', ['name' => 'Andrey']);
     // $nonPrivateAccountMedias = $instagram->getMedias('arzamaskov');
