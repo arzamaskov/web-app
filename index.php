@@ -1,39 +1,36 @@
 
 <?php
+    /* ERRORS */
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL & ~E_NOTICE);
+
+
     require_once 'vendor/autoload.php';
     use InstagramScraper\Instagram;
-    
+
     $loader = new \Twig\Loader\FilesystemLoader(__DIR__ . '/templates');
     $twig = new \Twig\Environment($loader);
 
     $instagram = new Instagram();
-    $account = $instagram->getAccount('camjpoulton');
 
-    // echo $twig->render('index.html', ['name' => 'Andrey']);
-    // $nonPrivateAccountMedias = $instagram->getMedias('arzamaskov');
-    // echo $twig->render('index.html', ['insta' => $nonPrivateAccountMedias[0]->getLink()]);
+    $urls = array();
 
-    // Available fields
-    // echo "Account info:\n";
-    // echo "Id: {$account->getId()}\n";
-    // echo "Username: {$account->getUsername()}\n";
-    // echo "Full name: {$account->getFullName()}\n";
-    // echo "Biography: {$account->getBiography()}\n";
-    // echo "Profile picture url: {$account->getProfilePicUrl()}\n";
-    // echo "External link: {$account->getExternalUrl()}\n";
-    // echo "Number of published posts: {$account->getMediaCount()}\n";
-    // echo "Number of followers: {$account->getFollowsCount()}\n";
-    // echo "Number of follows: {$account->getFollowedByCount()}\n";
-    // echo "Is private: {$account->isPrivate()}\n";
-    // echo "Is verified: {$account->isVerified()}\n";
+    if($_GET['tag'] == '') {
+        $tag = '';
+    }
+    else {
+       $tag = $_GET['tag'];
+       $medias = $instagram->getMediasByTag($tag, 20);
+       $media = $medias[0];
 
-    $instaData = array(
-        'id' => $account->getId(),
-        'username' => $account->getUsername(),
-        'full_name' => $account->getFullName(),
-        'profile_pic' => $account->getProfilePicUrl(),
-        'followers' => $account->getFollowsCount(),
-        'follows' => $account->getFollowedByCount()
-    );
+       foreach ($medias as $media) {
+           $urls[] = $media->getImageHighResolutionUrl();
+       }
 
-    echo $twig->render('index.html', $instaData);
+    }
+
+
+
+    echo $twig->render('index.html', ['urls' => $urls]);
+    //var_dump($urls);

@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Twig setting</title>
+    <title>Instagram account informaton</title>
 </head>
 <body>
     <h2>Instagram account informaton</h2>
-    <p>User ID: {{ id }}</p>
-    <p>Nickname: {{ username }}</p>
-    <p>Full name: {{ full_name }}</p>
-    <p>Profile picture:</p>
-    <img src="{{ profile_pic }}" alt="">
-    <p>Number of follwers: {{ followers }}</p>
-    <p>Number of follows: {{ follows }}</p>
+    <form method="GET">
+        <p><label for="tag">Type your intersrting instagram hashtag</label></p>
+        <p><input type="text" id="tag" name="tag" value="{{ tag }}"></p>
+        <input type="submit" value="Send">
+    </form>
+    {% for i in urls %}
+        {{ i }}
+    {% endfor %}
 </body>
 </html>
