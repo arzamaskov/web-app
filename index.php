@@ -1,11 +1,6 @@
 
 <?php
-    /* ERRORS */
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL & ~E_NOTICE);
-
-
+    require_once 'display_errors.php';
     require_once 'vendor/autoload.php';
     use InstagramScraper\Instagram;
 
@@ -33,4 +28,4 @@
 
 
     echo $twig->render('index.html', ['urls' => $urls]);
-    //var_dump($urls);
+    //var_dump($urls);``
