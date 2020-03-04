@@ -8,13 +8,19 @@
 <body>
     <h2>Get pictures from Instagram by the tag</h2>
     <form method="get">
-        <p><label for="tag">Type the Instagram tag you are interested below</label></p>
+        <p><label for="tag">
+                {% if warning == false %}
+                    Type the Instagram tag you are interested below.
+                {% else %}
+                    <span class="warning">Request must NOT be empty. Please try to type something in the field below.</span>
+                {% endif %}
+            </label></p>
         <p><input type="text" name="tag" id="tag" value="{{ tag }}"></p>
         <p><input type="submit" value="Send"></p>
     </form>
 
     {% for url in urls %}
-        <img src="{{ url }}" alt="">
+        <img width="150" src="{{ url }}" alt="">
     {% endfor %}
 </body>
 </html>
