@@ -3,16 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Twig setting</title>
+    <title>Get Instagram Pictures</title>
 </head>
 <body>
-    <h2>Instagram account informaton</h2>
-    <p>User ID: {{ id }}</p>
-    <p>Nickname: {{ username }}</p>
-    <p>Full name: {{ full_name }}</p>
-    <p>Profile picture:</p>
-    <img src="{{ profile_pic }}" alt="">
-    <p>Number of follwers: {{ followers }}</p>
-    <p>Number of follows: {{ follows }}</p>
+    <h2>Get pictures from Instagram by the tag</h2>
+    <form method="get">
+        <p><label for="tag">Type the Instagram tag you are interested below</label></p>
+        <p><input type="text" name="tag" id="tag" value="{{ tag }}"></p>
+        <p><input type="submit" value="Send"></p>
+    </form>
+
+    {% for url in urls %}
+        <img src="{{ url }}" alt="">
+    {% endfor %}
 </body>
 </html>
