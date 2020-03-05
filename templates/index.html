@@ -3,24 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="templates/styles.css">
     <title>Get Instagram Pictures</title>
 </head>
 <body>
-    <h2>Get pictures from Instagram by the tag</h2>
-    <form method="get">
-        <p><label for="tag">
-                {% if warning == false %}
-                    Type the Instagram tag you are interested below.
-                {% else %}
-                    <span class="warning">Request must NOT be empty. Please try to type something in the field below.</span>
-                {% endif %}
-            </label></p>
-        <p><input type="text" name="tag" id="tag" value="{{ tag }}"></p>
-        <p><input type="submit" value="Send"></p>
-    </form>
-
-    {% for url in urls %}
-        <img width="150" src="{{ url }}" alt="">
-    {% endfor %}
+    <div class="container">
+        <div class="header">
+            <h2>Get pictures from Instagram by the tag</h2>
+        </div>
+        <div class="content">
+            <div class="form">
+                <form method="get">
+                    <p>
+                        <label for="tag">
+                            {% if warning == false %}
+                                Type the Instagram tag you are interested below.
+                            {% else %}
+                                <span class="warning">Request must NOT be empty. Please try to type something in the field below.</span>
+                            {% endif %}
+                        </label>
+                    </p>
+                    <p>
+                        <input type="text" name="tag" id="tag" placeholder="Tag" value="{{ tag }}">
+                        <input type="submit" value="Send">
+                    </p>
+                </form>
+            </div>
+            <div class="gallery">
+                {% for url in urls %}
+                    <img width="150" src="{{ url }}" alt="Pictures are contained {{ tag }}">
+                {% endfor %}
+            </div>
+        </div>        
+    </div>
 </body>
 </html>

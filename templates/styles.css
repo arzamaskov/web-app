@@ -1,0 +1,18 @@
+body {
+	min-width: 320px;
+	font-family: "Helvetica", serif;
+	background: #fff;
+    max-width: 100%;
+    overflow-x: hidden;
+    margin: 0;
+}
+.container {
+	max-width: 680px;
+    min-width: 320px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.warning {
+	color: #dc3545;
+}
